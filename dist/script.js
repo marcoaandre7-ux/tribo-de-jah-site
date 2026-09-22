@@ -36,7 +36,6 @@ const introVideo = document.querySelector('.intro-video');
 const showContent = document.querySelector('.show-content');
 const starCanvas = document.querySelector('.starfield');
 const starContext = starCanvas.getContext('2d', { alpha: true });
-const route = document.querySelector('.route');
 const routePath = document.querySelector('#tour-route-path');
 const routeBus = document.querySelector('.map-bus');
 const routeSlider = document.querySelector('#route-slider');
@@ -51,7 +50,6 @@ let starSpeed = 1;
 let starBoost = 0;
 let stars = [];
 let introInView = true;
-let routeIsManual = false;
 let animationFrame = 0;
 
 function sizeStarfield() {
@@ -138,6 +136,7 @@ function positionBus(value) {
   const angle = Math.atan2(nextPoint.y - point.y, nextPoint.x - point.x) * 180 / Math.PI;
   routeBus.setAttribute('transform', `translate(${point.x} ${point.y}) rotate(${angle})`);
   routeOutput.value = `${Math.round(progress * 100)}%`;
+  routeSlider.style.setProperty('--route-value', `${Math.round(progress * 100)}%`);
 }
 
 function initializeIntroVideo() {
@@ -184,12 +183,6 @@ function updateMotion() {
     targetVideoTime = leadIn + clamp(storyProgress / 0.48) * Math.max(videoDuration - leadIn - 0.04, 0);
   }
 
-  if (!routeIsManual) {
-    const routeRect = route.getBoundingClientRect();
-    const routeProgress = clamp((viewport - routeRect.top) / (viewport + routeRect.height * 0.45));
-    routeSlider.value = String(Math.round(routeProgress * 100));
-    positionBus(routeSlider.value);
-  }
   requestMotionFrame();
 }
 
@@ -203,7 +196,6 @@ window.addEventListener('scroll', () => {
 }, { passive: true });
 
 routeSlider.addEventListener('input', () => {
-  routeIsManual = true;
   positionBus(routeSlider.value);
 });
 

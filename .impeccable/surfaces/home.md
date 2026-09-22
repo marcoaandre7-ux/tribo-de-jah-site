@@ -18,4 +18,4 @@ Video de multidao e palco ocupa a tela, com marca minima, chamada curta e texto 
 
 ## FORM
 
-Code-led. Seed key `1242b1e3`, assigned grounded direction 3: roteiro de luz e marcacoes de palco aplicado a uma narrativa de estrada. O movimento principal sincroniza o video ao scroll, atravessa preto e estrelas e traz a fotografia do show dentro da mesma cena; o onibus percorre uma rota curva sobre o mapa do Brasil por scroll ou controle manual; os discos saem das capas e giram em sessoes exclusivas de quinze segundos.
+Code-led. Seed key `1242b1e3`, assigned grounded direction 3: roteiro de luz e marcacoes de palco aplicado a uma narrativa de estrada. O movimento principal sincroniza o video ao scroll, atravessa preto e estrelas e traz a fotografia do show dentro da mesma cena; o mapa do Brasil ocupa um viewport inteiro e o onibus percorre a rota somente quando o visitante usa o controle manual; os discos saem das capas e giram em sessoes exclusivas de quinze segundos.

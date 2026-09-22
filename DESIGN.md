@@ -3,6 +3,7 @@ name: Tribo de Jah
 description: Palco, estrada e arquivo em uma narrativa digital de reggae.
 colors:
   backstage-black: "#070706"
+  blackout-black: "#000000"
   archive-paper: "#f2eee3"
   road-muted: "#b9b4a7"
   stage-amber: "#f2b544"
@@ -75,6 +76,7 @@ A paleta combina noite de palco, papel de arquivo e luz âmbar; as cores rastaf�
 ### Neutral
 
 - **Backstage Black:** base dominante das cenas, menus escuros e superfícies musicais.
+- **Blackout Black:** quadro de transição usado apenas para apagar completamente a cena antes da revelação.
 - **Archive Paper:** texto principal no escuro e fundo das pausas históricas.
 - **Road Muted:** informação secundária, placeholders e metadados.
 
@@ -131,6 +133,10 @@ Grandes regiões e capas são retangulares e sem arredondamento. Círculos perte
 ### Navigation
 
 O cabeçalho fica sobre a imagem, reduzido à marca e a um botão circular. O menu abre como um único campo âmbar e usa links condensados em escala de cartaz; fecha por botão, Escape ou seleção de destino.
+
+### Scrollytelling Intro
+
+A abertura ocupa uma sequência vertical longa com palco fixo. O scroll controla o tempo do vídeo, a cena fecha em preto total e a fotografia do próximo show aparece no mesmo enquadramento. Texto e ação só se tornam interativos depois da revelação; em movimento reduzido, a experiência abre diretamente no quadro final.
 
 ### Album Sleeve
 

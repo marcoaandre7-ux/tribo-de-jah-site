@@ -5,6 +5,7 @@
   "extensions": {
     "colorMeta": {
       "backstage-black": { "role": "neutral", "displayName": "Backstage Black", "canonical": "#070706", "tonalRamp": ["#080807", "#181816", "#30302c", "#4b4a45", "#716f67", "#9a978d", "#cbc7ba", "#f4f1e8"] },
+      "blackout-black": { "role": "neutral", "displayName": "Blackout Black", "canonical": "#000000", "tonalRamp": ["#000000", "#171717", "#333333", "#505050", "#707070", "#969696", "#c3c3c3", "#f2f2f2"] },
       "archive-paper": { "role": "neutral", "displayName": "Archive Paper", "canonical": "#f2eee3", "tonalRamp": ["#25231e", "#403d35", "#5e5a4f", "#7c786c", "#9d988b", "#bbb6aa", "#dad5ca", "#f2eee3"] },
       "stage-amber": { "role": "primary", "displayName": "Stage Amber", "canonical": "#f2b544", "tonalRamp": ["#2d2108", "#513b0e", "#745515", "#98701e", "#bc8b2c", "#dda63c", "#f2c56c", "#fbe8bb"] },
       "roots-green": { "role": "secondary", "displayName": "Roots Green", "canonical": "#4f7c50", "tonalRamp": ["#0e1f10", "#19351d", "#244b29", "#326338", "#4f7c50", "#75a176", "#a5c7a5", "#dcebdc"] },

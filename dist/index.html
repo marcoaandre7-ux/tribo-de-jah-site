@@ -37,28 +37,35 @@
     </nav>
 
     <main id="conteudo">
-      <section class="hero" id="inicio" aria-label="Abertura">
-        <video class="hero-video" autoplay muted loop playsinline poster="assets/destaque-show.jpg" aria-hidden="true">
-          <source src="assets/abertura-show.mp4" type="video/mp4" />
-        </video>
-        <div class="hero-shade"></div>
-        <div class="hero-copy">
-          <h1>O reggae<br />segue vivo.</h1>
-        </div>
-        <a class="hero-cue" href="#destaque">
-          <span>Próximo encontro</span>
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v15m0 0 6-6m-6 6-6-6" /></svg>
-        </a>
-      </section>
+      <section class="intro-story" id="inicio" aria-label="Abertura cinematográfica e próximo show">
+        <div class="intro-stage">
+          <video class="intro-video" muted playsinline preload="auto" aria-hidden="true">
+            <source src="assets/abertura-show.mp4" type="video/mp4" />
+          </video>
 
-      <section class="feature" id="destaque" aria-labelledby="feature-title">
-        <div class="feature-image" role="img" aria-label="Artista da Tribo de Jah cantando no palco"></div>
-        <div class="feature-shade"></div>
-        <div class="feature-content">
-          <h2 id="feature-title">Próximo show:<br /><span>coloque aqui o próximo evento</span></h2>
-          <a class="outline-button" href="#agenda">Ver agenda</a>
+          <div class="intro-grade" aria-hidden="true"></div>
+
+          <div class="opening-copy">
+            <h1>O reggae<br />segue vivo.</h1>
+          </div>
+
+          <div class="show-reveal" role="img" aria-label="Artista da Tribo de Jah cantando no palco"></div>
+          <div class="show-shade" aria-hidden="true"></div>
+          <div class="story-blackout" aria-hidden="true"></div>
+
+          <div class="show-content">
+            <h2>Próximo show:<br /><span>coloque aqui o próximo evento</span></h2>
+            <a class="outline-button" href="#agenda">Ver agenda</a>
+            <p class="prototype-note">Imagem e informações provisórias para este protótipo.</p>
+          </div>
+
+          <div class="story-cue" aria-hidden="true">
+            <span>Role para atravessar o show</span>
+            <svg viewBox="0 0 24 24"><path d="M12 4v15m0 0 6-6m-6 6-6-6" /></svg>
+          </div>
+
+          <div class="story-progress" aria-hidden="true"><span></span></div>
         </div>
-        <p class="prototype-note">Imagem e informações provisórias para este protótipo.</p>
       </section>
 
       <section class="history" id="historia" aria-labelledby="history-title">

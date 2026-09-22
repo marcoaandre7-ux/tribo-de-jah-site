@@ -30,24 +30,54 @@ document.addEventListener('keydown', (event) => {
 });
 
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-const heroVideo = document.querySelector('.hero-video');
-const heroCopy = document.querySelector('.hero-copy');
+const introStory = document.querySelector('.intro-story');
+const introStage = document.querySelector('.intro-stage');
+const introVideo = document.querySelector('.intro-video');
+const showContent = document.querySelector('.show-content');
 const route = document.querySelector('.route');
+
+const clamp = (value, min = 0, max = 1) => Math.min(Math.max(value, min), max);
+let videoDuration = 0;
+let lastVideoTime = -1;
+
+introVideo.addEventListener('loadedmetadata', () => {
+  videoDuration = Number.isFinite(introVideo.duration) ? introVideo.duration : 0;
+  introVideo.pause();
+  updateMotion();
+});
 
 function updateMotion() {
   if (reduceMotion.matches) return;
 
-  const scrollTop = window.scrollY;
-  const heroHeight = document.querySelector('.hero').offsetHeight;
-  const heroProgress = Math.min(scrollTop / heroHeight, 1);
-  heroVideo.style.transform = `scale(${1 + heroProgress * 0.08})`;
-  heroVideo.style.filter = `brightness(${1 - heroProgress * 0.62})`;
-  heroCopy.style.transform = `translateY(${heroProgress * 36}px)`;
-  heroCopy.style.opacity = String(1 - heroProgress * 1.25);
+  const viewport = window.innerHeight;
+  const introRect = introStory.getBoundingClientRect();
+  const introDistance = Math.max(introStory.offsetHeight - viewport, 1);
+  const storyProgress = clamp(-introRect.top / introDistance);
+  const openingOpacity = 1 - clamp((storyProgress - 0.08) / 0.18);
+  const blackoutIn = clamp((storyProgress - 0.46) / 0.14);
+  const blackoutOut = 1 - clamp((storyProgress - 0.72) / 0.16);
+  const blackoutOpacity = blackoutIn * blackoutOut;
+  const revealOpacity = clamp((storyProgress - 0.72) / 0.14);
+  const showOpacity = clamp((storyProgress - 0.81) / 0.11);
+
+  introStage.style.setProperty('--story-progress', storyProgress.toFixed(4));
+  introStage.style.setProperty('--opening-opacity', openingOpacity.toFixed(4));
+  introStage.style.setProperty('--blackout-opacity', blackoutOpacity.toFixed(4));
+  introStage.style.setProperty('--reveal-opacity', revealOpacity.toFixed(4));
+  introStage.style.setProperty('--show-opacity', showOpacity.toFixed(4));
+  showContent.classList.toggle('is-active', showOpacity > 0.85);
+
+  if (videoDuration > 0 && storyProgress <= 0.68) {
+    const leadIn = Math.min(0.35, videoDuration * 0.04);
+    const targetTime = leadIn + clamp(storyProgress / 0.58) * Math.max(videoDuration - leadIn - 0.04, 0);
+    if (Math.abs(targetTime - lastVideoTime) > 0.025) {
+      introVideo.currentTime = targetTime;
+      lastVideoTime = targetTime;
+    }
+  }
 
   const routeRect = route.getBoundingClientRect();
-  const viewport = window.innerHeight;
-  const routeProgress = Math.max(0, Math.min(1, (viewport - routeRect.top) / (viewport + routeRect.height * 0.45)));
+  const routeProgress = clamp((viewport - routeRect.top) / (viewport + routeRect.height * 0.45));
   const position = 18 + routeProgress * 69;
   route.style.setProperty('--bus-position', `${position}%`);
   route.style.setProperty('--route-progress', `${position}%`);
@@ -61,6 +91,7 @@ window.addEventListener('scroll', () => {
     motionFrame = 0;
   });
 }, { passive: true });
+window.addEventListener('resize', updateMotion, { passive: true });
 updateMotion();
 
 let activeAlbum = null;

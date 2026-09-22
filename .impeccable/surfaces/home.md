@@ -14,7 +14,7 @@ Abertura no show; encontro atual; memoria; estrada; discos; redes; contato; assi
 
 ## FIRST VIEWPORT
 
-Video de multidao e palco ocupa a tela, com marca minima, chamada curta e texto de escala de cartaz. Um botao inicia a sequencia automatica: video, tela preta, estrelas em perspectiva e fotografia do proximo show. O visitante pode pular a abertura; depois de concluida, so o botao de rever a reinicia.
+A primeira tela e escura, com marca minima, chamada curta e texto de escala de cartaz. Um botao inicia a sequencia automatica: video do palco com enquadramento completo no notebook, tela preta, estrelas em perspectiva e fotografia do proximo show com o rosto visivel. O visitante pode pular a abertura; depois de concluida, so o botao de rever a reinicia.
 
 ## FORM
 

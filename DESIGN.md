@@ -142,7 +142,7 @@ O cabeçalho fica sobre a imagem, reduzido à marca e a um botão circular. O me
 
 ### Scrollytelling Intro
 
-A abertura ocupa uma tela e começa somente pelo botão “Assistir à abertura”. O vídeo toca naturalmente e uma linha de tempo leva a câmera ao apagão, às estrelas e à foto do próximo show. “Pular animação” revela a foto imediatamente; ao terminar, a rolagem fica livre e a foto permanece até o visitante clicar em “Rever abertura”. Em movimento reduzido, a experiência abre diretamente no quadro final.
+A abertura ocupa uma tela escura, sem foto parada, e começa somente pelo botão “Assistir à abertura”. O vídeo toca naturalmente e uma linha de tempo leva a câmera ao apagão, às estrelas e à foto do próximo show. Em notebooks largos, o vídeo vertical preserva o palco inteiro em uma área própria; a foto final mantém o rosto à vista e deixa o texto em um campo separado. “Pular animação” revela a foto imediatamente; ao terminar, a rolagem fica livre e a foto permanece até o visitante clicar em “Rever abertura”. Em movimento reduzido, a experiência abre diretamente no quadro final.
 
 ### Album Sleeve
 

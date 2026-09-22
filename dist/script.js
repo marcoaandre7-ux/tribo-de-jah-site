@@ -30,12 +30,13 @@ document.addEventListener('keydown', (event) => {
 });
 
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-const mobileMotion = window.matchMedia('(max-width: 700px), (pointer: coarse)');
-const desktopWheel = window.matchMedia('(min-width: 701px) and (pointer: fine)');
 const introStory = document.querySelector('.intro-story');
 const introStage = document.querySelector('.intro-stage');
 const introVideo = document.querySelector('.intro-video');
 const showContent = document.querySelector('.show-content');
+const introStart = document.querySelector('.intro-start');
+const introSkip = document.querySelector('.intro-skip');
+const introReplay = document.querySelector('.intro-replay');
 const starCanvas = document.querySelector('.starfield');
 const starContext = starCanvas.getContext('2d', { alpha: true });
 const routePath = document.querySelector('#tour-route-path');
@@ -48,20 +49,16 @@ const routeCountdownTime = document.querySelector('.route-countdown strong');
 const routeRestart = document.querySelector('.route-restart');
 
 const clamp = (value, min = 0, max = 1) => Math.min(Math.max(value, min), max);
-let videoDuration = 0;
-let targetVideoTime = 0;
 let storyProgress = 0;
 let starsOpacity = 0;
 let starSpeed = 1;
 let starBoost = 0;
 let stars = [];
-let introInView = true;
-let animationFrame = 0;
-let introVideoPrimed = false;
-let wheelTarget = 0;
-let wheelFrame = 0;
-let lastWheelTime = 0;
-let wheelGestureOrigin = 0;
+let introState = 'idle';
+let introFrame = 0;
+let introStartedAt = 0;
+let introPausedAt = 0;
+let introVideoSeconds = 8;
 const routeDemoDuration = 60000;
 let routeDemoStartedAt = null;
 let routeDemoFrame = 0;
@@ -121,29 +118,6 @@ function drawStarfield() {
   });
 }
 
-function animateMotion() {
-  let keepAnimating = false;
-  if (!mobileMotion.matches && introInView && videoDuration > 0) {
-    const difference = targetVideoTime - introVideo.currentTime;
-    if (Math.abs(difference) > 0.012) {
-      if (!introVideo.seeking) {
-        const smoothing = Math.abs(difference) > 1.2 ? 0.34 : 0.22;
-        introVideo.currentTime += difference * smoothing;
-      }
-      keepAnimating = true;
-    }
-  }
-  if (introInView && starsOpacity > 0.01) {
-    drawStarfield();
-    keepAnimating = true;
-  }
-  animationFrame = keepAnimating ? requestAnimationFrame(animateMotion) : 0;
-}
-
-function requestMotionFrame() {
-  if (!animationFrame && !reduceMotion.matches) animationFrame = requestAnimationFrame(animateMotion);
-}
-
 function positionBus(value) {
   const progress = clamp(Number(value) / 100);
   const length = routePath.getTotalLength();
@@ -188,45 +162,8 @@ function restartRouteDemo() {
   updateRouteDemo();
 }
 
-function initializeIntroVideo() {
-  videoDuration = Number.isFinite(introVideo.duration) ? introVideo.duration : 0;
-  introVideo.pause();
-  const warmup = introVideo.play();
-  if (warmup && typeof warmup.then === 'function') warmup.then(() => introVideo.pause()).catch(() => {});
-  updateMotion();
-}
-
-function primeIntroVideo() {
-  if (reduceMotion.matches || introVideoPrimed || introVideo.readyState < 1) return;
-  const playback = introVideo.play();
-  if (playback && typeof playback.then === 'function') {
-    playback.then(() => {
-      introVideoPrimed = true;
-      introStory.removeEventListener('touchstart', primeIntroVideo);
-      introStory.removeEventListener('pointerdown', primeIntroVideo);
-      if (!mobileMotion.matches) introVideo.pause();
-      updateMotion();
-    }).catch(() => {});
-  }
-}
-
-if (introVideo.readyState >= 1) {
-  initializeIntroVideo();
-} else {
-  introVideo.addEventListener('loadedmetadata', initializeIntroVideo, { once: true });
-}
-
-introStory.addEventListener('touchstart', primeIntroVideo, { passive: true });
-introStory.addEventListener('pointerdown', primeIntroVideo, { passive: true });
-
-function updateMotion() {
-  if (reduceMotion.matches) return;
-
-  const viewport = window.innerHeight;
-  const introRect = introStory.getBoundingClientRect();
-  const introDistance = Math.max(introStory.offsetHeight - viewport, 1);
-  storyProgress = clamp(-introRect.top / introDistance);
-  introInView = introRect.bottom > 0 && introRect.top < viewport;
+function setIntroProgress(progress) {
+  storyProgress = clamp(progress);
   const openingOpacity = 1 - clamp((storyProgress - 0.08) / 0.18);
   const blackoutIn = clamp((storyProgress - 0.42) / 0.12);
   const blackoutOut = 1 - clamp((storyProgress - 0.79) / 0.11);
@@ -236,7 +173,7 @@ function updateMotion() {
   starsOpacity = starsIn * starsOut;
   const revealOpacity = clamp((storyProgress - 0.78) / 0.14);
   const showOpacity = clamp((storyProgress - 0.86) / 0.1);
-  const cameraScale = 1 + clamp(storyProgress / 0.48) * (mobileMotion.matches ? 0.08 : 0.04);
+  const cameraScale = 1 + clamp(storyProgress / 0.48) * (window.innerWidth <= 700 ? 0.08 : 0.04);
 
   introStage.style.setProperty('--story-progress', storyProgress.toFixed(4));
   introStage.style.setProperty('--opening-opacity', openingOpacity.toFixed(4));
@@ -247,73 +184,93 @@ function updateMotion() {
   introStage.style.setProperty('--camera-scale', cameraScale.toFixed(4));
   starCanvas.classList.toggle('is-active', starsOpacity > 0.08);
   showContent.classList.toggle('is-active', showOpacity > 0.85);
-
-  if (mobileMotion.matches) {
-    const shouldPlay = introInView && storyProgress < 0.5 && introVideoPrimed && !introVideo.ended;
-    if (shouldPlay && introVideo.paused) introVideo.play().catch(() => {});
-    if (!shouldPlay && !introVideo.paused) introVideo.pause();
-  } else if (videoDuration > 0) {
-    const leadIn = Math.min(0.08, videoDuration * 0.01);
-    targetVideoTime = leadIn + clamp(storyProgress / 0.48) * Math.max(videoDuration - leadIn - 0.04, 0);
-  }
-
-  requestMotionFrame();
 }
 
-let scrollFrame = 0;
-window.addEventListener('scroll', () => {
-  if (scrollFrame) return;
-  scrollFrame = requestAnimationFrame(() => {
-    updateMotion();
-    scrollFrame = 0;
+function finishIntro(focusReplay = false) {
+  if (introFrame) cancelAnimationFrame(introFrame);
+  introFrame = 0;
+  introVideo.pause();
+  introState = 'done';
+  introStage.classList.remove('is-playing');
+  introStage.classList.add('is-done');
+  document.documentElement.classList.remove('intro-locked');
+  showContent.inert = false;
+  setIntroProgress(1);
+  if (focusReplay) introReplay.focus({ preventScroll: true });
+}
+
+function advanceIntro(now) {
+  if (introState !== 'playing') return;
+  const elapsed = (now - introStartedAt) / 1000;
+  const transitionSeconds = 4;
+  const progress = elapsed < introVideoSeconds
+    ? (elapsed / introVideoSeconds) * 0.54
+    : 0.54 + ((elapsed - introVideoSeconds) / transitionSeconds) * 0.46;
+  setIntroProgress(progress);
+  if (storyProgress >= 0.54 && !introVideo.paused) introVideo.pause();
+  if (starsOpacity > 0.01) drawStarfield();
+  if (progress >= 1) {
+    finishIntro();
+    return;
+  }
+  introFrame = requestAnimationFrame(advanceIntro);
+}
+
+function startIntro() {
+  if (reduceMotion.matches) {
+    finishIntro();
+    return;
+  }
+  if (introFrame) cancelAnimationFrame(introFrame);
+  introVideo.pause();
+  try { introVideo.currentTime = 0; } catch (_) { /* The poster still supports the sequence. */ }
+  introVideoSeconds = Number.isFinite(introVideo.duration) && introVideo.duration > 0 ? introVideo.duration : 8;
+  introState = 'playing';
+  introStage.classList.remove('is-done');
+  introStage.classList.add('is-playing');
+  document.documentElement.classList.add('intro-locked');
+  showContent.inert = true;
+  setIntroProgress(0);
+  window.scrollTo({ top: introStory.offsetTop, behavior: 'instant' });
+  introSkip.focus({ preventScroll: true });
+  introVideo.play().catch(() => {});
+  introStartedAt = performance.now();
+  introFrame = requestAnimationFrame(advanceIntro);
+}
+
+introStart.addEventListener('click', startIntro);
+introSkip.addEventListener('click', () => finishIntro(true));
+introReplay.addEventListener('click', startIntro);
+
+document.querySelectorAll('a[href^="#"]').forEach((link) => {
+  link.addEventListener('click', () => {
+    if (link.getAttribute('href') !== '#inicio' && introState !== 'done') finishIntro();
   });
-}, { passive: true });
+});
 
-function animateWheelScroll() {
-  const distance = wheelTarget - window.scrollY;
-  if (Math.abs(distance) < 0.8) {
-    window.scrollTo({ top: wheelTarget, behavior: 'instant' });
-    wheelFrame = 0;
-    return;
+document.addEventListener('visibilitychange', () => {
+  if (introState !== 'playing') return;
+  if (document.hidden) {
+    introPausedAt = performance.now();
+    introVideo.pause();
+    cancelAnimationFrame(introFrame);
+    introFrame = 0;
+  } else if (introPausedAt) {
+    introStartedAt += performance.now() - introPausedAt;
+    introPausedAt = 0;
+    if (storyProgress < 0.54) introVideo.play().catch(() => {});
+    introFrame = requestAnimationFrame(advanceIntro);
   }
-  window.scrollTo({ top: window.scrollY + distance * 0.18, behavior: 'instant' });
-  wheelFrame = requestAnimationFrame(animateWheelScroll);
+});
+
+showContent.inert = true;
+sizeStarfield();
+if (reduceMotion.matches || (location.hash && location.hash !== '#inicio') || window.scrollY > window.innerHeight * 0.2) {
+  finishIntro();
+} else {
+  document.documentElement.classList.add('intro-locked');
+  setIntroProgress(0);
 }
-
-window.addEventListener('wheel', (event) => {
-  if (!desktopWheel.matches || reduceMotion.matches || event.ctrlKey || !event.deltaY) return;
-
-  const introEnd = introStory.offsetTop + introStory.offsetHeight - window.innerHeight;
-  const now = performance.now();
-  const continuingGesture = now - lastWheelTime <= 180;
-  const movingForwardInsideIntro = event.deltaY > 0 && window.scrollY < introEnd - 1;
-  const movingBackInsideIntro = event.deltaY < 0 && window.scrollY > introStory.offsetTop + 1 && window.scrollY <= introEnd + 1;
-  const carryingMomentumPastBoundary = continuingGesture
-    && ((event.deltaY > 0 && wheelTarget >= introEnd - 1) || (event.deltaY < 0 && wheelTarget <= introStory.offsetTop + 1));
-  if (carryingMomentumPastBoundary) {
-    event.preventDefault();
-    lastWheelTime = now;
-    return;
-  }
-  if (!movingForwardInsideIntro && !movingBackInsideIntro) return;
-
-  event.preventDefault();
-  if (!continuingGesture) {
-    wheelTarget = window.scrollY;
-    wheelGestureOrigin = window.scrollY;
-  }
-  lastWheelTime = now;
-
-  const unit = event.deltaMode === 1 ? 18 : event.deltaMode === 2 ? window.innerHeight : 1;
-  const controlledDelta = clamp(event.deltaY * unit, -220, 220) * 0.48;
-  const gestureRange = Math.min(window.innerHeight * 0.72, 560);
-  wheelTarget = clamp(
-    wheelTarget + controlledDelta,
-    Math.max(introStory.offsetTop, wheelGestureOrigin - gestureRange),
-    Math.min(introEnd, wheelGestureOrigin + gestureRange)
-  );
-  if (!wheelFrame) wheelFrame = requestAnimationFrame(animateWheelScroll);
-}, { passive: false });
 
 const routeObserver = new IntersectionObserver((entries) => {
   routeDemoVisible = entries[0].isIntersecting;
@@ -331,15 +288,12 @@ routeRestart.addEventListener('click', restartRouteDemo);
 
 starCanvas.addEventListener('pointerdown', () => {
   starBoost = 8;
-  requestMotionFrame();
 });
 window.addEventListener('pointerup', () => { starBoost = 0; });
 
 window.addEventListener('resize', () => {
   sizeStarfield();
-  updateMotion();
 }, { passive: true });
-sizeStarfield();
 positionBus(0);
 if (reduceMotion.matches) {
   positionBus(100);
@@ -347,8 +301,6 @@ if (reduceMotion.matches) {
   routeCountdownTime.textContent = '';
   routeRestart.disabled = true;
 }
-updateMotion();
-
 let activeAlbum = null;
 let previewTimer = null;
 

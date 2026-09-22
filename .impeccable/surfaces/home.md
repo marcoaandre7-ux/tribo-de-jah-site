@@ -14,8 +14,8 @@ Abertura no show; encontro atual; memoria; estrada; discos; redes; contato; assi
 
 ## FIRST VIEWPORT
 
-Video de multidao e palco ocupa a tela, com marca minima, chamada curta e texto de escala de cartaz. O scroll conduz o proprio video com interpolacao suave, fecha a cena em preto total, cruza um campo de estrelas em perspectiva e revela a fotografia do proximo show sem trocar de secao.
+Video de multidao e palco ocupa a tela, com marca minima, chamada curta e texto de escala de cartaz. Um botao inicia a sequencia automatica: video, tela preta, estrelas em perspectiva e fotografia do proximo show. O visitante pode pular a abertura; depois de concluida, so o botao de rever a reinicia.
 
 ## FORM
 
-Code-led. Seed key `1242b1e3`, assigned grounded direction 3: roteiro de luz e marcacoes de palco aplicado a uma narrativa de estrada. O movimento principal sincroniza o video ao scroll, atravessa preto e estrelas e traz a fotografia do show dentro da mesma cena; o mapa do Brasil ocupa um viewport inteiro e o onibus demonstra automaticamente uma viagem de sessenta segundos com progresso e contagem regressiva; os discos saem das capas e giram em sessoes exclusivas de quinze segundos.
+Code-led. Seed key `1242b1e3`, assigned grounded direction 3: roteiro de luz e marcacoes de palco aplicado a uma narrativa de estrada. O movimento principal comeca por acao explicita, atravessa video, preto e estrelas e traz a fotografia do show dentro da mesma cena; o mapa do Brasil ocupa um viewport inteiro e o onibus demonstra automaticamente uma viagem de sessenta segundos com progresso e contagem regressiva; os discos saem das capas e giram em sessoes exclusivas de quinze segundos.

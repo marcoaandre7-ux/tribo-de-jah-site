@@ -9,10 +9,10 @@
     <link rel="preload" href="assets/abertura-poster.png" as="image" fetchpriority="high" />
     <link rel="preload" href="assets/destaque-show.jpg" as="image" />
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23070706'/%3E%3Cpath d='M10 18h44v9H37v27H27V27H10z' fill='%23f2b544'/%3E%3Cpath d='M42 10h12v6H42z' fill='%23b8392d'/%3E%3Cpath d='M28 10h12v6H28z' fill='%23e2ad38'/%3E%3Cpath d='M14 10h12v6H14z' fill='%234f7c50'/%3E%3C/svg%3E" />
-    <link rel="stylesheet" href="styles.css?v=roots-2" />
+    <link rel="stylesheet" href="styles.css?v=intro-play-1" />
   </head>
   <body>
-    <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
+    <a class="skip-link" href="#historia">Ir para o conteúdo</a>
 
     <header class="topbar" aria-label="Cabeçalho principal">
       <a class="brand" href="#inicio" aria-label="Tribo de Jah — início">
@@ -57,13 +57,16 @@
 
           <div class="show-content">
             <h2>Próximo show:<br /><span>coloque aqui o próximo evento</span></h2>
-            <a class="outline-button" href="#agenda">Ver agenda</a>
+            <div class="show-actions">
+              <a class="outline-button" href="#agenda">Ver agenda</a>
+              <button class="outline-button intro-replay" type="button">Rever abertura</button>
+            </div>
             <p class="prototype-note">Imagem e informações provisórias para este protótipo.</p>
           </div>
 
-          <div class="story-cue" aria-hidden="true">
-            <span>Role para atravessar o show</span>
-            <svg viewBox="0 0 24 24"><path d="M12 4v15m0 0 6-6m-6 6-6-6" /></svg>
+          <div class="intro-controls">
+            <button class="intro-start" type="button">Assistir à abertura <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 12h15m-6-6 6 6-6 6" /></svg></button>
+            <button class="intro-skip" type="button">Pular animação</button>
           </div>
 
           <div class="story-progress" aria-hidden="true"><span></span></div>
@@ -213,6 +216,6 @@
       </div>
     </footer>
 
-    <script src="script.js?v=roots-2" defer></script>
+    <script src="script.js?v=intro-play-1" defer></script>
   </body>
 </html>

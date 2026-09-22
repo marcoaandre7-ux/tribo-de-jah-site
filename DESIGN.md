@@ -144,7 +144,7 @@ A capa quadrada cobre parcialmente um disco escuro. Ao ativar, a capa recua, o v
 
 ### Tour Route
 
-O contorno geográfico do Brasil ocupa uma cena de viewport inteiro e sustenta uma rota curva entre origem e destino provisórios. Título, instrução e próximo show ficam sobrepostos em planos de alto contraste. O ônibus permanece parado até o visitante usar o controle de faixa e então acompanha exatamente sua posição; os nomes ficam fora do mapa-base, em placas ligadas aos dois pontos, sem inventar cidades ou agenda.
+O contorno geográfico do Brasil ocupa uma cena de viewport inteiro e sustenta uma rota curva entre origem e destino provisórios. Título, instrução e próximo show ficam sobrepostos em planos de alto contraste. Neste protótipo, o ônibus demonstra uma viagem completa em sessenta segundos a partir da entrada da seção, enquanto a barra e a contagem regressiva mostram seu avanço; um controle permite reiniciar o teste. Em movimento reduzido, a rota aparece concluída sem deslocamento. Os nomes ficam fora do mapa-base, em placas ligadas aos dois pontos, sem inventar cidades ou agenda.
 
 ## Do's and Don'ts
 

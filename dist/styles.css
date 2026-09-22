@@ -115,15 +115,16 @@ body.menu-open { overflow: hidden; }
 .route-name-end { bottom: 14%; left: 34%; }
 .route-panel { position: absolute; z-index: 6; right: clamp(1.25rem, 4vw, 4rem); bottom: clamp(1.25rem, 4vh, 3rem); display: grid; width: min(33rem, 39vw); gap: 1.4rem; padding: 1.5rem; border: 1px solid var(--line); background: rgba(7,7,6,.94); box-shadow: 0 24px 55px rgba(0,0,0,.38); }
 .route-control { padding: 0; }
-.route-control label { display: flex; justify-content: space-between; gap: 1rem; margin-bottom: 1.2rem; font-family: var(--display); font-size: .95rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
+.route-control-head { display: flex; justify-content: space-between; gap: 1rem; margin-bottom: 1rem; font-family: var(--display); font-size: .95rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
 .route-control output { color: var(--gold); font-variant-numeric: tabular-nums; }
-.route-control input { --route-value: 0%; width: 100%; height: 2.75rem; margin: 0; appearance: none; border: 0; background: transparent; cursor: grab; }
-.route-control input::-webkit-slider-runnable-track { height: 4px; border-radius: 999px; background: linear-gradient(90deg, var(--gold) var(--route-value), rgba(242,238,227,.28) var(--route-value)); }
-.route-control input::-webkit-slider-thumb { width: 1.35rem; height: 1.35rem; margin-top: -.55rem; appearance: none; border: 4px solid var(--ink); border-radius: 50%; background: var(--gold); box-shadow: 0 4px 12px rgba(0,0,0,.35); }
-.route-control input::-moz-range-track { height: 4px; border: 0; border-radius: 999px; background: rgba(242,238,227,.28); }
-.route-control input::-moz-range-progress { height: 4px; border-radius: 999px; background: var(--gold); }
-.route-control input::-moz-range-thumb { width: 1rem; height: 1rem; border: 4px solid var(--ink); border-radius: 50%; background: var(--gold); }
-.route-control input:active { cursor: grabbing; }
+.route-progress-track { --route-value: 0%; position: relative; height: 1.35rem; background: linear-gradient(90deg, var(--gold) var(--route-value), rgba(242,238,227,.28) var(--route-value)) center / 100% 4px no-repeat; }
+.route-progress-track::after { content: ""; position: absolute; top: 50%; left: clamp(.68rem, var(--route-value), calc(100% - .68rem)); width: 1.35rem; height: 1.35rem; border: 4px solid var(--ink); border-radius: 50%; background: var(--gold); box-shadow: 0 4px 12px rgba(0,0,0,.35); transform: translate(-50%, -50%); }
+.route-live { display: grid; grid-template-columns: auto 1fr auto; gap: .65rem; align-items: center; margin-top: .8rem; color: var(--muted); font-size: .7rem; letter-spacing: .06em; text-transform: uppercase; }
+.route-live-dot { width: .55rem; height: .55rem; border-radius: 50%; background: var(--green); }
+.route-countdown strong { color: var(--paper); font-variant-numeric: tabular-nums; }
+.route-restart { padding: .25rem 0; border: 0; border-bottom: 1px solid rgba(242,238,227,.45); color: var(--paper); background: transparent; font: inherit; letter-spacing: inherit; text-transform: inherit; cursor: pointer; }
+.route-restart:hover { border-color: var(--gold); color: var(--gold); }
+.route-restart:disabled { border-color: transparent; color: var(--muted); cursor: default; }
 .next-show { padding-top: 1.7rem; border-top: 1px solid var(--line); }
 .next-show > p { margin: 0 0 .8rem; color: var(--gold); font-family: var(--display); font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
 .next-show h3 { max-width: 16ch; margin: 0; font-family: var(--display); font-size: clamp(2.5rem, 3.7vw, 4rem); font-weight: 600; line-height: .9; text-transform: uppercase; }
@@ -224,8 +225,9 @@ body.menu-open { overflow: hidden; }
   .route-name-start { top: 41%; right: auto; left: .75rem; }
   .route-name-end { right: auto; bottom: 41%; left: .75rem; }
   .route-panel { right: .75rem; bottom: max(.75rem, env(safe-area-inset-bottom)); left: .75rem; width: auto; gap: .9rem; padding: 1rem; }
-  .route-control label { margin-bottom: .7rem; }
-  .route-control input { height: 2.3rem; }
+  .route-control-head { margin-bottom: .7rem; }
+  .route-live { grid-template-columns: auto 1fr; }
+  .route-restart { grid-column: 2; justify-self: start; }
   .next-show { padding-top: .9rem; }
   .next-show h3 { max-width: 14ch; font-size: clamp(2rem, 10vw, 2.75rem); }
   .next-show dl { gap: 2.5rem; margin-top: 1rem; }

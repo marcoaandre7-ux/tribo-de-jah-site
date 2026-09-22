@@ -184,6 +184,8 @@ function restartRouteDemo() {
 function initializeIntroVideo() {
   videoDuration = Number.isFinite(introVideo.duration) ? introVideo.duration : 0;
   introVideo.pause();
+  const warmup = introVideo.play();
+  if (warmup && typeof warmup.then === 'function') warmup.then(() => introVideo.pause()).catch(() => {});
   updateMotion();
 }
 

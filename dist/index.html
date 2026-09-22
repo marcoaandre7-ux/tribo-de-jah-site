@@ -52,6 +52,7 @@
           <div class="show-reveal" role="img" aria-label="Artista da Tribo de Jah cantando no palco"></div>
           <div class="show-shade" aria-hidden="true"></div>
           <div class="story-blackout" aria-hidden="true"></div>
+          <canvas class="starfield" aria-hidden="true"></canvas>
 
           <div class="show-content">
             <h2>Próximo show:<br /><span>coloque aqui o próximo evento</span></h2>
@@ -91,26 +92,38 @@
           <p class="tour-intro">A rota será atualizada com as cidades, datas e links oficiais de cada apresentação.</p>
         </div>
 
-        <div class="route" aria-label="Rota ilustrativa da turnê">
-          <div class="route-line" aria-hidden="true">
-            <span class="route-progress"></span>
-          </div>
-          <div class="route-stop route-start"><span>Partida</span></div>
-          <div class="route-stop route-end"><span>Próximo show</span></div>
-          <div class="tour-bus" aria-hidden="true">
-            <svg viewBox="0 0 64 40" role="img">
-              <path d="M9 5h41c4 0 7 3 7 7v18H6V8c0-2 1-3 3-3Z" />
-              <path d="M12 10h10v9H12zm14 0h10v9H26zm14 0h10v9H40z" />
-              <circle cx="17" cy="31" r="5" /><circle cx="47" cy="31" r="5" />
+        <div class="route" aria-label="Mapa interativo da rota da turnê">
+          <div class="map-card">
+            <p class="map-instruction">Arraste o controle e acompanhe a viagem.</p>
+            <svg class="brazil-map" viewBox="0 0 500 520" role="img" aria-label="Contorno do Brasil com uma rota ilustrativa entre duas cidades">
+              <path class="brazil-shape" d="M261.6 490.6 L258.4 483.9 L263.6 478.3 L256.7 470.2 L247.5 463.7 L235.3 456.1 L230.9 456.5 L219.1 447.3 L211.4 448.6 L227.2 432.5 L240.5 421 L248.4 416.2 L258.4 409.7 L258.6 400.2 L252.7 393.4 L246.8 395.7 L249.2 388.8 L250.8 381.8 L250.8 375.3 L246.5 373.2 L242.1 375.1 L237.7 374.6 L236.3 370 L235.2 359.2 L233 355.7 L225 352.5 L220.2 354.8 L207.7 352.5 L208.5 336.5 L205 329.9 L208.7 327.5 L207.6 320.7 L210.8 315.6 L212.9 306.2 L210.1 298.9 L203.6 295.6 L202.4 290.9 L204.1 284.1 L181.4 283.6 L176.9 269.8 L180.4 269.6 L180.2 264.5 L177.9 261.1 L177.4 254.3 L170.5 250.8 L163.1 250.9 L158.2 247.4 L150.2 245.1 L145.5 240.7 L132.3 238.7 L119.5 228.1 L120.4 220.2 L119 215.7 L120.2 206.8 L104.8 208.8 L98.5 213.3 L88.2 218 L85.6 221.6 L79.5 221.9 L70.7 220.9 L64 222.9 L58.6 221.6 L59.4 203.6 L49.7 210.6 L39.3 210.3 L34.8 204 L27 203.3 L29.5 198.2 L22.9 191 L18 180.4 L21.1 178.2 L21.1 173.2 L28.2 169.8 L27.1 163.4 L30.1 159.3 L30.9 153.8 L44.5 145.7 L54.1 143.5 L55.7 141.7 L66.4 142.2 L71.7 109.8 L72 104.7 L70.1 97.9 L64.9 93.6 L64.9 85 L71.6 83.1 L74 84.3 L74.4 79.8 L67.4 78.6 L67.3 71.2 L90.3 71.4 L94.2 67.4 L97.5 71.1 L99.8 78.1 L102 76.6 L108.6 82.9 L117.7 82.1 L120 78.5 L128.8 75.7 L133.7 73.8 L135.1 68.8 L143.5 65.4 L142.9 62.9 L132.9 61.9 L131.2 54.5 L131.7 46.6 L126.4 43.5 L128.6 42.4 L137.4 43.9 L146.8 46.9 L150.2 44.1 L158.7 42.2 L171.9 37.8 L176.2 33.3 L174.7 30 L180.8 29.4 L183.5 32.2 L182 37.4 L186.1 39.1 L188.8 44.6 L185.5 48.8 L183.6 58.9 L186.6 64.8 L187.5 70.3 L194.8 75.9 L200.6 76.4 L201.9 74.1 L205.6 73.6 L211 71.5 L214.8 68.4 L221.3 69.4 L224.2 69 L230.7 69.9 L231.7 67.5 L229.7 65.2 L230.9 61.8 L235.7 62.8 L241.3 61.6 L248 64.1 L253.2 66.5 L256.9 63.3 L259.5 63.8 L261.1 67.2 L266.8 66.3 L271.3 61.8 L274.9 53.1 L281.9 42.3 L285.9 41.7 L288.9 48.3 L295.5 69 L301.8 70.9 L302.1 79.1 L293.3 88.8 L296.9 92.4 L317.8 94.2 L318.2 106.1 L327.2 98.3 L342.1 102.6 L361.7 109.8 L367.5 116.7 L365.6 123.2 L379.3 119.6 L402.3 125.8 L420 125.4 L437.4 135.2 L452.5 148.4 L461.6 151.8 L471.7 152.3 L476 156 L480 171.1 L482 178.2 L477.3 197.8 L471.3 205.5 L454.6 221.9 L447.1 235.3 L438.3 245.5 L435.4 245.8 L432.1 254.5 L432.9 276.6 L429.6 294.8 L428.4 302.6 L424.6 307.3 L422.5 323.1 L410.6 338.5 L408.5 350.7 L399 355.8 L396.2 362.9 L383.4 362.9 L364.8 367.4 L356.5 372.7 L343.2 376.2 L329.3 385.6 L319.3 397.3 L317.6 406.1 L319.5 412.6 L317.3 424.6 L314.7 430.3 L306.4 436.8 L293.3 457.7 L282.9 467 L274.9 472.6 L269.5 483.8 L261.6 490.6 Z" />
+              <path class="map-route-shadow" d="M405 165 C454 226 433 314 334 387" />
+              <path class="map-route" id="tour-route-path" d="M405 165 C454 226 433 314 334 387" />
+              <circle class="map-stop map-stop-start" cx="405" cy="165" r="8" />
+              <circle class="map-stop map-stop-end" cx="334" cy="387" r="8" />
+              <g class="map-bus" aria-hidden="true">
+                <rect x="-25" y="-14" width="50" height="26" rx="6" />
+                <path d="M-17-8h10v9h-10zm14 0H7v9H-3zM11-8h8v9h-8z" />
+                <circle cx="-15" cy="13" r="5" /><circle cx="15" cy="13" r="5" />
+              </g>
             </svg>
+            <div class="route-name route-name-start"><span>Saindo de</span><strong>Cidade de partida</strong></div>
+            <div class="route-name route-name-end"><span>Chegando em</span><strong>Próximo destino</strong></div>
           </div>
-          <div class="next-show">
-            <p>Próximo show</p>
-            <h3>Coloque aqui o próximo evento</h3>
-            <dl>
-              <div><dt>Data</dt><dd>Em breve</dd></div>
-              <div><dt>Local</dt><dd>A confirmar</dd></div>
-            </dl>
+
+          <div class="route-panel">
+            <div class="route-control">
+              <label for="route-slider"><span>Percorra a rota</span><output for="route-slider">0%</output></label>
+              <input id="route-slider" type="range" min="0" max="100" value="0" step="1" aria-label="Posição do ônibus na rota" />
+            </div>
+            <div class="next-show">
+              <p>Próximo show</p>
+              <h3>Coloque aqui o próximo evento</h3>
+              <dl>
+                <div><dt>Data</dt><dd>Em breve</dd></div>
+                <div><dt>Local</dt><dd>A confirmar</dd></div>
+              </dl>
+            </div>
           </div>
         </div>
       </section>

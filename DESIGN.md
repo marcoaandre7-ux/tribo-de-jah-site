@@ -136,7 +136,7 @@ O cabeçalho fica sobre a imagem, reduzido à marca e a um botão circular. O me
 
 ### Scrollytelling Intro
 
-A abertura ocupa uma sequência vertical longa com palco fixo. O scroll controla o tempo do vídeo, a cena fecha em preto total e a fotografia do próximo show aparece no mesmo enquadramento. Texto e ação só se tornam interativos depois da revelação; em movimento reduzido, a experiência abre diretamente no quadro final.
+A abertura ocupa uma sequência vertical longa com palco fixo. O scroll controla o tempo do vídeo com interpolação suave, a cena fecha em preto total, atravessa um campo de estrelas em perspectiva e revela a fotografia do próximo show no mesmo enquadramento. O campo reage ao pressionar do ponteiro e só anima durante sua passagem. Texto e ação só se tornam interativos depois da revelação; em movimento reduzido, a experiência abre diretamente no quadro final.
 
 ### Album Sleeve
 
@@ -144,7 +144,7 @@ A capa quadrada cobre parcialmente um disco escuro. Ao ativar, a capa recua, o v
 
 ### Tour Route
 
-Uma linha fina conecta partida e destino. O avanço colore a rota em âmbar e move o ônibus no mesmo valor, preservando a relação entre posição e progresso.
+O contorno geográfico do Brasil sustenta uma rota curva entre origem e destino provisórios. O ônibus acompanha o caminho por scroll até a primeira ação do visitante; depois, um controle de faixa assume a posição manual. Os nomes ficam fora do mapa-base, em placas ligadas aos dois pontos, sem inventar cidades ou agenda.
 
 ## Do's and Don'ts
 

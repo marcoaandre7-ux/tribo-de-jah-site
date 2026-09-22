@@ -189,11 +189,27 @@ function initializeIntroVideo() {
   updateMotion();
 }
 
+function primeIntroVideo() {
+  if (reduceMotion.matches || introVideo.readyState < 1) return;
+  const playback = introVideo.play();
+  if (playback && typeof playback.then === 'function') {
+    playback.then(() => {
+      window.setTimeout(() => {
+        introVideo.pause();
+        updateMotion();
+      }, 80);
+    }).catch(() => {});
+  }
+}
+
 if (introVideo.readyState >= 1) {
   initializeIntroVideo();
 } else {
   introVideo.addEventListener('loadedmetadata', initializeIntroVideo, { once: true });
 }
+
+introStory.addEventListener('touchstart', primeIntroVideo, { once: true, passive: true });
+introStory.addEventListener('pointerdown', primeIntroVideo, { once: true, passive: true });
 
 function updateMotion() {
   if (reduceMotion.matches) return;
@@ -248,7 +264,7 @@ const routeObserver = new IntersectionObserver((entries) => {
     cancelAnimationFrame(routeDemoFrame);
     routeDemoFrame = 0;
   }
-}, { threshold: 0.25 });
+}, { threshold: 0, rootMargin: '-20% 0px -20% 0px' });
 routeObserver.observe(tourSection);
 
 routeRestart.addEventListener('click', restartRouteDemo);

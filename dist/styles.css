@@ -54,7 +54,7 @@ body.menu-open { overflow: hidden; }
 .intro-story { position: relative; height: 420svh; background: var(--ink); }
 .intro-stage { --story-progress: 0; --opening-opacity: 1; --blackout-opacity: 0; --stars-opacity: 0; --reveal-opacity: 0; --show-opacity: 0; position: sticky; top: 0; height: 100svh; overflow: hidden; isolation: isolate; background: var(--ink); }
 .intro-video, .show-reveal, .intro-grade, .show-shade, .story-blackout { position: absolute; inset: 0; width: 100%; height: 100%; }
-.intro-video { z-index: -5; object-fit: cover; transform: scale(calc(1 + var(--story-progress) * .08)); filter: saturate(1.05) contrast(1.04); will-change: transform; }
+.intro-video { z-index: -5; object-fit: cover; filter: saturate(1.05) contrast(1.04); }
 .intro-grade { z-index: -4; background: linear-gradient(180deg, rgba(7,7,6,.12) 0%, rgba(7,7,6,.03) 40%, rgba(7,7,6,.92) 100%), linear-gradient(90deg, rgba(184,57,45,.14), transparent 38%, rgba(79,124,80,.1)); mix-blend-mode: screen; }
 .opening-copy { position: absolute; z-index: 1; right: 0; bottom: 0; left: 0; width: min(88rem, 100%); margin: 0 auto; padding: 8rem clamp(1.25rem, 6vw, 6rem) clamp(7rem, 14vh, 10rem); opacity: var(--opening-opacity); transform: translateY(calc((1 - var(--opening-opacity)) * 2.5rem)); will-change: opacity, transform; }
 .opening-copy h1 { max-width: 9ch; margin: 0; font-family: var(--display); font-size: clamp(4.6rem, 13vw, 9rem); font-weight: 700; line-height: .75; letter-spacing: -.035em; text-transform: uppercase; text-wrap: balance; }

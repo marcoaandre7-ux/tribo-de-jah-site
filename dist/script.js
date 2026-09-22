@@ -112,8 +112,10 @@ function animateMotion() {
   if (introInView && videoDuration > 0) {
     const difference = targetVideoTime - introVideo.currentTime;
     if (Math.abs(difference) > 0.012) {
-      const smoothing = Math.abs(difference) > 1.2 ? 0.2 : 0.11;
-      introVideo.currentTime += difference * smoothing;
+      if (!introVideo.seeking) {
+        const smoothing = Math.abs(difference) > 1.2 ? 0.34 : 0.22;
+        introVideo.currentTime += difference * smoothing;
+      }
       keepAnimating = true;
     }
   }
@@ -171,9 +173,9 @@ function updateMotion() {
   starCanvas.classList.toggle('is-active', starsOpacity > 0.08);
   showContent.classList.toggle('is-active', showOpacity > 0.85);
 
-  if (videoDuration > 0 && storyProgress <= 0.62) {
-    const leadIn = Math.min(0.35, videoDuration * 0.04);
-    targetVideoTime = leadIn + clamp(storyProgress / 0.54) * Math.max(videoDuration - leadIn - 0.04, 0);
+  if (videoDuration > 0) {
+    const leadIn = Math.min(0.08, videoDuration * 0.01);
+    targetVideoTime = leadIn + clamp(storyProgress / 0.48) * Math.max(videoDuration - leadIn - 0.04, 0);
   }
 
   if (!routeIsManual) {

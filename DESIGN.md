@@ -9,6 +9,10 @@ colors:
   stage-amber: "#f2b544"
   roots-green: "#4f7c50"
   signal-red: "#b8392d"
+  roots-deep: "#132b1b"
+  roots-bright: "#659353"
+  sun-yellow: "#f5c247"
+  clay-red: "#c64a33"
 typography:
   display:
     fontFamily: "Barlow Condensed, Arial Narrow, sans-serif"
@@ -72,6 +76,8 @@ A paleta combina noite de palco, papel de arquivo e luz âmbar; as cores rastaf�
 
 - **Roots Green:** aparece na assinatura tricolor e em pequenos sinais de identidade.
 - **Signal Red:** completa a assinatura e marca alertas cromáticos pontuais.
+- **Roots Deep:** sustenta menus, superfícies musicais e campos de sound system.
+- **Roots Bright, Sun Yellow e Clay Red:** formam o pulso tricolor que marca as mudanças de cena.
 
 ### Neutral
 
@@ -80,7 +86,7 @@ A paleta combina noite de palco, papel de arquivo e luz âmbar; as cores rastaf�
 - **Archive Paper:** texto principal no escuro e fundo das pausas históricas.
 - **Road Muted:** informação secundária, placeholders e metadados.
 
-**The Small Signal Rule.** Verde, amarelo e vermelho juntos pertencem a marcas pequenas; não formar grandes faixas decorativas.
+**The Roots Rhythm Rule.** Verde, amarelo e vermelho marcam entradas, mudanças de cena e objetos musicais. A combinação pode atravessar a largura da página em linhas finas, mas grandes superfícies continuam usando uma cor dominante por vez.
 
 ## Typography
 
@@ -136,7 +142,7 @@ O cabeçalho fica sobre a imagem, reduzido à marca e a um botão circular. O me
 
 ### Scrollytelling Intro
 
-A abertura ocupa uma sequência vertical longa com palco fixo. O scroll controla o tempo do vídeo com interpolação suave, a cena fecha em preto total, atravessa um campo de estrelas em perspectiva e revela a fotografia do próximo show no mesmo enquadramento. O campo reage ao pressionar do ponteiro e só anima durante sua passagem. Texto e ação só se tornam interativos depois da revelação; em movimento reduzido, a experiência abre diretamente no quadro final.
+A abertura ocupa uma sequência vertical longa com palco fixo. No desktop, o scroll controla o tempo do vídeo com interpolação suave. Em telas móveis, o vídeo toca continuamente após o primeiro gesto enquanto o scroll controla o avanço de câmera, o apagão, as estrelas e a revelação, evitando buscas de quadro que travam o Safari. Texto e ação só se tornam interativos depois da revelação; em movimento reduzido, a experiência abre diretamente no quadro final.
 
 ### Album Sleeve
 

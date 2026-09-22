@@ -40,7 +40,7 @@ O site sera visitado antes e depois de shows, por links de redes sociais e por b
 
 ## Brand Commitments
 
-Nome Tribo de Jah. O prototipo parte da identidade percebida nos materiais fornecidos: palco noturno, energia coletiva, reggae, estrada, tons escuros, luzes roxas e ambar, com acentos verde, amarelo e vermelho usados com contencao. O resultado deve ser profissional, autentico e autoral, sem visual generico de reggae.
+Nome Tribo de Jah. O prototipo parte da identidade percebida nos materiais fornecidos: palco noturno, energia coletiva, reggae, estrada, tons escuros, luzes roxas e ambar. Verde profundo, amarelo solar e vermelho terroso devem formar um ritmo visual reconhecivel nas mudancas de cena, no menu e nos objetos musicais. O resultado deve ser profissional, autentico e autoral, sem recorrer a simbolos genericos de reggae.
 
 ## Evidence on Hand
 

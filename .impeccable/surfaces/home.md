@@ -6,7 +6,7 @@ O site coloca o visitante dentro do caminho palco-multidao-estrada-acervo, com a
 
 ## OWN-WORLD
 
-Um roteiro de luz de show noturno: preto quente de bastidores, papel claro de arquivo, ambar de refletores, verde e vermelho em marcas pequenas. A tipografia e comprimida como cartaz de festival; linhas, paradas e estados se comportam como marcacoes de palco e estrada.
+Um roteiro de luz de show noturno com pulso de sound system: preto quente de bastidores, papel claro de arquivo e grandes campos de ambar ou verde profundo. Verde, amarelo e vermelho formam linhas ritmicas nas mudanças de cena e nas capas. A tipografia e comprimida como cartaz de festival; linhas, paradas e estados se comportam como marcacoes de palco e estrada.
 
 ## STORY
 

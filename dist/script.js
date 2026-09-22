@@ -30,6 +30,7 @@ document.addEventListener('keydown', (event) => {
 });
 
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+const mobileMotion = window.matchMedia('(max-width: 700px), (pointer: coarse)');
 const introStory = document.querySelector('.intro-story');
 const introStage = document.querySelector('.intro-stage');
 const introVideo = document.querySelector('.intro-video');
@@ -55,6 +56,7 @@ let starBoost = 0;
 let stars = [];
 let introInView = true;
 let animationFrame = 0;
+let introVideoPrimed = false;
 const routeDemoDuration = 60000;
 let routeDemoStartedAt = null;
 let routeDemoFrame = 0;
@@ -116,7 +118,7 @@ function drawStarfield() {
 
 function animateMotion() {
   let keepAnimating = false;
-  if (introInView && videoDuration > 0) {
+  if (!mobileMotion.matches && introInView && videoDuration > 0) {
     const difference = targetVideoTime - introVideo.currentTime;
     if (Math.abs(difference) > 0.012) {
       if (!introVideo.seeking) {
@@ -190,14 +192,15 @@ function initializeIntroVideo() {
 }
 
 function primeIntroVideo() {
-  if (reduceMotion.matches || introVideo.readyState < 1) return;
+  if (reduceMotion.matches || introVideoPrimed || introVideo.readyState < 1) return;
   const playback = introVideo.play();
   if (playback && typeof playback.then === 'function') {
     playback.then(() => {
-      window.setTimeout(() => {
-        introVideo.pause();
-        updateMotion();
-      }, 80);
+      introVideoPrimed = true;
+      introStory.removeEventListener('touchstart', primeIntroVideo);
+      introStory.removeEventListener('pointerdown', primeIntroVideo);
+      if (!mobileMotion.matches) introVideo.pause();
+      updateMotion();
     }).catch(() => {});
   }
 }
@@ -208,8 +211,8 @@ if (introVideo.readyState >= 1) {
   introVideo.addEventListener('loadedmetadata', initializeIntroVideo, { once: true });
 }
 
-introStory.addEventListener('touchstart', primeIntroVideo, { once: true, passive: true });
-introStory.addEventListener('pointerdown', primeIntroVideo, { once: true, passive: true });
+introStory.addEventListener('touchstart', primeIntroVideo, { passive: true });
+introStory.addEventListener('pointerdown', primeIntroVideo, { passive: true });
 
 function updateMotion() {
   if (reduceMotion.matches) return;
@@ -228,6 +231,7 @@ function updateMotion() {
   starsOpacity = starsIn * starsOut;
   const revealOpacity = clamp((storyProgress - 0.78) / 0.14);
   const showOpacity = clamp((storyProgress - 0.86) / 0.1);
+  const cameraScale = 1 + clamp(storyProgress / 0.48) * (mobileMotion.matches ? 0.08 : 0.04);
 
   introStage.style.setProperty('--story-progress', storyProgress.toFixed(4));
   introStage.style.setProperty('--opening-opacity', openingOpacity.toFixed(4));
@@ -235,10 +239,15 @@ function updateMotion() {
   introStage.style.setProperty('--stars-opacity', starsOpacity.toFixed(4));
   introStage.style.setProperty('--reveal-opacity', revealOpacity.toFixed(4));
   introStage.style.setProperty('--show-opacity', showOpacity.toFixed(4));
+  introStage.style.setProperty('--camera-scale', cameraScale.toFixed(4));
   starCanvas.classList.toggle('is-active', starsOpacity > 0.08);
   showContent.classList.toggle('is-active', showOpacity > 0.85);
 
-  if (videoDuration > 0) {
+  if (mobileMotion.matches) {
+    const shouldPlay = introInView && storyProgress < 0.5 && introVideoPrimed && !introVideo.ended;
+    if (shouldPlay && introVideo.paused) introVideo.play().catch(() => {});
+    if (!shouldPlay && !introVideo.paused) introVideo.pause();
+  } else if (videoDuration > 0) {
     const leadIn = Math.min(0.08, videoDuration * 0.01);
     targetVideoTime = leadIn + clamp(storyProgress / 0.48) * Math.max(videoDuration - leadIn - 0.04, 0);
   }

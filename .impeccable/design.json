@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-22T00:00:00-03:00",
+  "title": "Design System: Tribo de Jah",
+  "extensions": {
+    "colorMeta": {
+      "backstage-black": { "role": "neutral", "displayName": "Backstage Black", "canonical": "#070706", "tonalRamp": ["#080807", "#181816", "#30302c", "#4b4a45", "#716f67", "#9a978d", "#cbc7ba", "#f4f1e8"] },
+      "archive-paper": { "role": "neutral", "displayName": "Archive Paper", "canonical": "#f2eee3", "tonalRamp": ["#25231e", "#403d35", "#5e5a4f", "#7c786c", "#9d988b", "#bbb6aa", "#dad5ca", "#f2eee3"] },
+      "stage-amber": { "role": "primary", "displayName": "Stage Amber", "canonical": "#f2b544", "tonalRamp": ["#2d2108", "#513b0e", "#745515", "#98701e", "#bc8b2c", "#dda63c", "#f2c56c", "#fbe8bb"] },
+      "roots-green": { "role": "secondary", "displayName": "Roots Green", "canonical": "#4f7c50", "tonalRamp": ["#0e1f10", "#19351d", "#244b29", "#326338", "#4f7c50", "#75a176", "#a5c7a5", "#dcebdc"] },
+      "signal-red": { "role": "secondary", "displayName": "Signal Red", "canonical": "#b8392d", "tonalRamp": ["#2c0d0a", "#4c1712", "#6d211a", "#8e2b22", "#b8392d", "#d7675d", "#e9a29b", "#f8dcd9"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Festival Display", "purpose": "Títulos de grande escala e assinatura." },
+      "body": { "displayName": "Editorial Body", "purpose": "História, agenda e explicações." }
+    },
+    "shadows": [
+      { "name": "object-lift", "value": "0 18px 35px rgba(0,0,0,.34)", "purpose": "Separa capas e objetos móveis do fundo." }
+    ],
+    "motion": [
+      { "name": "stage-exit", "value": "cubic-bezier(.16,1,.3,1)", "purpose": "Movimentos físicos de menu, capa e disco." },
+      { "name": "preview-window", "value": "15s linear", "purpose": "Janela visual das prévias musicais." }
+    ],
+    "breakpoints": [
+      { "name": "mobile", "value": "700px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Outline Action",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "Ação compacta sobre fundos escuros ou fotografia.",
+      "html": "<a class=\"ds-outline\" href=\"#\">VER AGENDA</a>",
+      "css": ".ds-outline{display:inline-flex;min-height:3.25rem;align-items:center;padding:0 1.35rem;border:1px solid rgba(242,238,227,.65);border-radius:999px;color:#f2eee3;background:transparent;font:600 .78rem Archivo,sans-serif;letter-spacing:.12em;text-decoration:none}.ds-outline:hover{color:#070706;background:#f2eee3}.ds-outline:focus-visible{outline:2px solid #f2b544;outline-offset:5px}"
+    },
+    {
+      "name": "Menu Trigger",
+      "kind": "button",
+      "refersTo": "menu-trigger",
+      "description": "Controle circular discreto sobre o palco.",
+      "html": "<button class=\"ds-menu\" aria-label=\"Abrir menu\"><span></span><span></span></button>",
+      "css": ".ds-menu{display:grid;gap:7px;width:3rem;height:3rem;place-content:center;border:1px solid rgba(242,238,227,.24);border-radius:50%;color:#f2eee3;background:rgba(7,7,6,.5)}.ds-menu span{display:block;width:1.15rem;height:1px;background:currentColor}.ds-menu:focus-visible{outline:2px solid #f2b544;outline-offset:5px}"
+    },
+    {
+      "name": "Album State",
+      "kind": "custom",
+      "refersTo": "album-state",
+      "description": "Estado textual de um disco pronto ou em reprodução.",
+      "html": "<div class=\"ds-album-state\"><strong>ÁLBUM 01</strong><span>OUVIR PRÉVIA</span></div>",
+      "css": ".ds-album-state{display:flex;justify-content:space-between;gap:1rem;color:#f2eee3;font:600 .86rem 'Barlow Condensed',sans-serif;letter-spacing:.08em;text-transform:uppercase}.ds-album-state span{color:#b9b4a7;font-size:.72rem}"
+    },
+    {
+      "name": "Contact Row",
+      "kind": "custom",
+      "refersTo": "contact-row",
+      "description": "Linha editorial para canais de contato.",
+      "html": "<div class=\"ds-contact\"><span>SHOWS E EVENTOS</span><a href=\"#\">ADICIONAR E-MAIL</a></div>",
+      "css": ".ds-contact{display:grid;grid-template-columns:1fr 1.3fr;gap:1rem;padding:1.5rem 0;border-block:1px solid rgba(7,7,6,.25);color:#070706}.ds-contact span{color:#56534c;font:400 .8rem Archivo,sans-serif;letter-spacing:.08em}.ds-contact a{color:inherit;font:600 1.25rem 'Barlow Condensed',sans-serif;text-underline-offset:.28em}.ds-contact a:focus-visible{outline:2px solid #f2b544;outline-offset:5px}"
+    },
+    {
+      "name": "Route Marker",
+      "kind": "custom",
+      "refersTo": "route-marker",
+      "description": "Marcador circular que ancora a rota da turnê.",
+      "html": "<div class=\"ds-route\"><i></i><span>PRÓXIMO SHOW</span></div>",
+      "css": ".ds-route{display:inline-grid;justify-items:end;gap:.5rem;color:#f2eee3;font:600 .8rem 'Barlow Condensed',sans-serif;letter-spacing:.1em}.ds-route i{display:block;width:1.65rem;height:1.65rem;border:6px solid #070706;border-radius:50%;background:#f2eee3}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Roteiro de Luz",
+    "overview": "O sistema parece ter sido montado entre o palco e a estrada: grandes campos escuros, explosões de luz âmbar, fotografia ao vivo e pausas claras que funcionam como páginas de arquivo. A energia vem da escala, da compressão tipográfica e do movimento de elementos com função — câmera, ônibus e discos — não de ornamento espalhado.",
+    "keyCharacteristics": ["Fotografia de palco em escala total.", "Tipografia condensada com ritmo de cartaz.", "Alternância entre bastidor escuro e arquivo claro.", "Movimento concentrado em três momentos memoráveis.", "Conteúdo provisório sempre identificado com honestidade."],
+    "rules": [
+      { "name": "Small Signal", "body": "Verde, amarelo e vermelho juntos pertencem a marcas pequenas; não formar grandes faixas decorativas.", "section": "colors" },
+      { "name": "Poster Scale", "body": "Um título condensado deve carregar cada composição; textos auxiliares recuam em tamanho e contraste.", "section": "typography" },
+      { "name": "Stage Depth", "body": "Use luz, sobreposição e contraste para profundidade; reserve sombras para objetos que se movem.", "section": "elevation" }
+    ],
+    "dos": ["Do usar fotografia real de palco como principal fonte de atmosfera.", "Do manter títulos curtos, condensados e com grande contraste de escala.", "Do concentrar movimento em interações ligadas à música e à estrada.", "Do identificar claramente conteúdo provisório e links ausentes."],
+    "donts": ["Don't preencher grandes áreas com verde, amarelo e vermelho apenas para sinalizar reggae.", "Don't transformar cada conteúdo em cartão arredondado.", "Don't adicionar brilhos, transparências ou animações sem função narrativa.", "Don't inventar agenda, história, capas, músicas ou contatos."]
+  }
+}

@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#070706" />
+    <meta name="description" content="Tribo de Jah — música, estrada e encontros que atravessam gerações." />
+    <title>Tribo de Jah — Site Oficial</title>
+    <link rel="preload" href="assets/destaque-show.jpg" as="image" fetchpriority="high" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23070706'/%3E%3Cpath d='M10 18h44v9H37v27H27V27H10z' fill='%23f2b544'/%3E%3Cpath d='M42 10h12v6H42z' fill='%23b8392d'/%3E%3Cpath d='M28 10h12v6H28z' fill='%23e2ad38'/%3E%3Cpath d='M14 10h12v6H14z' fill='%234f7c50'/%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
+
+    <header class="topbar" aria-label="Cabeçalho principal">
+      <a class="brand" href="#inicio" aria-label="Tribo de Jah — início">
+        <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span>TRIBO<br />DE JAH</span>
+      </a>
+      <button class="menu-button" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu-panel">
+        <span></span><span></span>
+      </button>
+    </header>
+
+    <nav class="menu-panel" id="menu-panel" aria-label="Navegação principal" hidden>
+      <div class="menu-wordmark" aria-hidden="true">TRIBO<br />DE JAH</div>
+      <div class="menu-links">
+        <a href="#inicio">Início</a>
+        <a href="#historia">História</a>
+        <a href="#agenda">Agenda</a>
+        <a href="#discografia">Discografia</a>
+        <a href="#redes">Redes</a>
+        <a href="#contato">Contato</a>
+      </div>
+      <a class="menu-social" href="https://www.instagram.com/tribodejahoficial/" target="_blank" rel="noreferrer">Instagram oficial</a>
+    </nav>
+
+    <main id="conteudo">
+      <section class="hero" id="inicio" aria-label="Abertura">
+        <video class="hero-video" autoplay muted loop playsinline poster="assets/destaque-show.jpg" aria-hidden="true">
+          <source src="assets/abertura-show.mp4" type="video/mp4" />
+        </video>
+        <div class="hero-shade"></div>
+        <div class="hero-copy">
+          <h1>O reggae<br />segue vivo.</h1>
+        </div>
+        <a class="hero-cue" href="#destaque">
+          <span>Próximo encontro</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v15m0 0 6-6m-6 6-6-6" /></svg>
+        </a>
+      </section>
+
+      <section class="feature" id="destaque" aria-labelledby="feature-title">
+        <div class="feature-image" role="img" aria-label="Artista da Tribo de Jah cantando no palco"></div>
+        <div class="feature-shade"></div>
+        <div class="feature-content">
+          <h2 id="feature-title">Próximo show:<br /><span>coloque aqui o próximo evento</span></h2>
+          <a class="outline-button" href="#agenda">Ver agenda</a>
+        </div>
+        <p class="prototype-note">Imagem e informações provisórias para este protótipo.</p>
+      </section>
+
+      <section class="history" id="historia" aria-labelledby="history-title">
+        <div class="history-heading">
+          <h2 id="history-title">Raízes que<br />atravessam o tempo.</h2>
+        </div>
+        <div class="history-copy">
+          <p class="history-lead">Este espaço receberá a história oficial da banda, contada com imagens de arquivo, momentos marcantes e as vozes de quem viveu cada capítulo.</p>
+          <p>Texto histórico da banda. Adicione aqui o conteúdo aprovado, datas importantes e os acontecimentos que ajudam a compreender essa trajetória.</p>
+        </div>
+        <div class="photo-strip" aria-label="Espaços reservados para fotos históricas">
+          <div class="photo-placeholder photo-tall"><span>Foto de arquivo 01</span></div>
+          <div class="photo-placeholder"><span>Foto de arquivo 02</span></div>
+          <div class="photo-placeholder photo-wide"><span>Foto de arquivo 03</span></div>
+        </div>
+      </section>
+
+      <section class="tour" id="agenda" aria-labelledby="tour-title">
+        <div class="tour-top">
+          <div>
+            <h2 id="tour-title">A próxima parada<br />já está no horizonte.</h2>
+          </div>
+          <p class="tour-intro">A rota será atualizada com as cidades, datas e links oficiais de cada apresentação.</p>
+        </div>
+
+        <div class="route" aria-label="Rota ilustrativa da turnê">
+          <div class="route-line" aria-hidden="true">
+            <span class="route-progress"></span>
+          </div>
+          <div class="route-stop route-start"><span>Partida</span></div>
+          <div class="route-stop route-end"><span>Próximo show</span></div>
+          <div class="tour-bus" aria-hidden="true">
+            <svg viewBox="0 0 64 40" role="img">
+              <path d="M9 5h41c4 0 7 3 7 7v18H6V8c0-2 1-3 3-3Z" />
+              <path d="M12 10h10v9H12zm14 0h10v9H26zm14 0h10v9H40z" />
+              <circle cx="17" cy="31" r="5" /><circle cx="47" cy="31" r="5" />
+            </svg>
+          </div>
+          <div class="next-show">
+            <p>Próximo show</p>
+            <h3>Coloque aqui o próximo evento</h3>
+            <dl>
+              <div><dt>Data</dt><dd>Em breve</dd></div>
+              <div><dt>Local</dt><dd>A confirmar</dd></div>
+            </dl>
+          </div>
+        </div>
+      </section>
+
+      <section class="discography" id="discografia" aria-labelledby="discography-title">
+        <div class="discography-heading">
+          <div>
+            <h2 id="discography-title">Escolha um disco.<br />Deixe rodar.</h2>
+          </div>
+          <p>As capas, os nomes e os trechos oficiais entram na próxima etapa. A interação já está pronta para receber cada faixa.</p>
+        </div>
+
+        <div class="album-shelf" role="list" aria-label="Álbuns de demonstração">
+          <article class="album" role="listitem" data-album="1">
+            <button class="album-button" type="button" aria-label="Reproduzir álbum 01" aria-pressed="false">
+              <span class="sleeve sleeve-one"><b>Álbum 01</b><small>Capa oficial em breve</small></span>
+              <span class="vinyl"><i></i></span>
+            </button>
+            <div class="album-meta"><span>Álbum 01</span><span class="album-status">Ouvir prévia</span></div>
+            <div class="album-progress"><span></span></div>
+          </article>
+
+          <article class="album" role="listitem" data-album="2">
+            <button class="album-button" type="button" aria-label="Reproduzir álbum 02" aria-pressed="false">
+              <span class="sleeve sleeve-two"><b>Álbum 02</b><small>Capa oficial em breve</small></span>
+              <span class="vinyl"><i></i></span>
+            </button>
+            <div class="album-meta"><span>Álbum 02</span><span class="album-status">Ouvir prévia</span></div>
+            <div class="album-progress"><span></span></div>
+          </article>
+
+          <article class="album" role="listitem" data-album="3">
+            <button class="album-button" type="button" aria-label="Reproduzir álbum 03" aria-pressed="false">
+              <span class="sleeve sleeve-three"><b>Álbum 03</b><small>Capa oficial em breve</small></span>
+              <span class="vinyl"><i></i></span>
+            </button>
+            <div class="album-meta"><span>Álbum 03</span><span class="album-status">Ouvir prévia</span></div>
+            <div class="album-progress"><span></span></div>
+          </article>
+
+          <article class="album" role="listitem" data-album="4">
+            <button class="album-button" type="button" aria-label="Reproduzir álbum 04" aria-pressed="false">
+              <span class="sleeve sleeve-four"><b>Álbum 04</b><small>Capa oficial em breve</small></span>
+              <span class="vinyl"><i></i></span>
+            </button>
+            <div class="album-meta"><span>Álbum 04</span><span class="album-status">Ouvir prévia</span></div>
+            <div class="album-progress"><span></span></div>
+          </article>
+        </div>
+        <p class="audio-note"><span aria-hidden="true"></span> Demonstração silenciosa: os trechos de 15 segundos serão ativados somente após a aprovação da banda.</p>
+      </section>
+
+      <section class="social" id="redes" aria-labelledby="social-title">
+        <div class="social-copy">
+          <h2 id="social-title">A conversa continua<br />fora do palco.</h2>
+        </div>
+        <div class="social-links">
+          <a href="https://www.instagram.com/tribodejahoficial/" target="_blank" rel="noreferrer"><span>Instagram</span><small>Perfil oficial</small><svg class="social-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" /></svg></a>
+          <span class="social-pending"><span>TikTok</span><small>Adicionar link oficial</small></span>
+          <span class="social-pending"><span>YouTube</span><small>Adicionar link oficial</small></span>
+        </div>
+      </section>
+
+      <section class="contact" id="contato" aria-labelledby="contact-title">
+        <div>
+          <h2 id="contact-title">Vamos conversar.</h2>
+        </div>
+        <div class="contact-grid">
+          <div><span>Shows e eventos</span><a href="mailto:contato@adicionar.com">Adicionar e-mail</a></div>
+          <div><span>Telefone</span><a href="#contato">Adicionar número</a></div>
+          <div><span>Imprensa e parcerias</span><a href="mailto:imprensa@adicionar.com">Adicionar contato</a></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-title">TRIBO <span>DE</span> JAH</div>
+      <div class="footer-bottom">
+        <p>Reggae, resistência e encontros.</p>
+        <p>Protótipo visual — conteúdo provisório.</p>
+      </div>
+    </footer>
+
+    <script src="script.js" defer></script>
+  </body>
+</html>

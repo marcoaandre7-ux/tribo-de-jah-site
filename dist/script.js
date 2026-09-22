@@ -31,6 +31,7 @@ document.addEventListener('keydown', (event) => {
 
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 const mobileMotion = window.matchMedia('(max-width: 700px), (pointer: coarse)');
+const desktopWheel = window.matchMedia('(min-width: 701px) and (pointer: fine)');
 const introStory = document.querySelector('.intro-story');
 const introStage = document.querySelector('.intro-stage');
 const introVideo = document.querySelector('.intro-video');
@@ -57,6 +58,10 @@ let stars = [];
 let introInView = true;
 let animationFrame = 0;
 let introVideoPrimed = false;
+let wheelTarget = 0;
+let wheelFrame = 0;
+let lastWheelTime = 0;
+let wheelGestureOrigin = 0;
 const routeDemoDuration = 60000;
 let routeDemoStartedAt = null;
 let routeDemoFrame = 0;
@@ -263,6 +268,52 @@ window.addEventListener('scroll', () => {
     scrollFrame = 0;
   });
 }, { passive: true });
+
+function animateWheelScroll() {
+  const distance = wheelTarget - window.scrollY;
+  if (Math.abs(distance) < 0.8) {
+    window.scrollTo({ top: wheelTarget, behavior: 'instant' });
+    wheelFrame = 0;
+    return;
+  }
+  window.scrollTo({ top: window.scrollY + distance * 0.18, behavior: 'instant' });
+  wheelFrame = requestAnimationFrame(animateWheelScroll);
+}
+
+window.addEventListener('wheel', (event) => {
+  if (!desktopWheel.matches || reduceMotion.matches || event.ctrlKey || !event.deltaY) return;
+
+  const introEnd = introStory.offsetTop + introStory.offsetHeight - window.innerHeight;
+  const now = performance.now();
+  const continuingGesture = now - lastWheelTime <= 180;
+  const movingForwardInsideIntro = event.deltaY > 0 && window.scrollY < introEnd - 1;
+  const movingBackInsideIntro = event.deltaY < 0 && window.scrollY > introStory.offsetTop + 1 && window.scrollY <= introEnd + 1;
+  const carryingMomentumPastBoundary = continuingGesture
+    && ((event.deltaY > 0 && wheelTarget >= introEnd - 1) || (event.deltaY < 0 && wheelTarget <= introStory.offsetTop + 1));
+  if (carryingMomentumPastBoundary) {
+    event.preventDefault();
+    lastWheelTime = now;
+    return;
+  }
+  if (!movingForwardInsideIntro && !movingBackInsideIntro) return;
+
+  event.preventDefault();
+  if (!continuingGesture) {
+    wheelTarget = window.scrollY;
+    wheelGestureOrigin = window.scrollY;
+  }
+  lastWheelTime = now;
+
+  const unit = event.deltaMode === 1 ? 18 : event.deltaMode === 2 ? window.innerHeight : 1;
+  const controlledDelta = clamp(event.deltaY * unit, -220, 220) * 0.48;
+  const gestureRange = Math.min(window.innerHeight * 0.72, 560);
+  wheelTarget = clamp(
+    wheelTarget + controlledDelta,
+    Math.max(introStory.offsetTop, wheelGestureOrigin - gestureRange),
+    Math.min(introEnd, wheelGestureOrigin + gestureRange)
+  );
+  if (!wheelFrame) wheelFrame = requestAnimationFrame(animateWheelScroll);
+}, { passive: false });
 
 const routeObserver = new IntersectionObserver((entries) => {
   routeDemoVisible = entries[0].isIntersecting;

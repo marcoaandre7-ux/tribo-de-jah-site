@@ -142,7 +142,7 @@ O cabeçalho fica sobre a imagem, reduzido à marca e a um botão circular. O me
 
 ### Scrollytelling Intro
 
-A abertura ocupa uma sequência vertical longa com palco fixo. No desktop, o scroll controla o tempo do vídeo com interpolação suave. Em telas móveis, o vídeo toca continuamente após o primeiro gesto enquanto o scroll controla o avanço de câmera, o apagão, as estrelas e a revelação, evitando buscas de quadro que travam o Safari. Texto e ação só se tornam interativos depois da revelação; em movimento reduzido, a experiência abre diretamente no quadro final.
+A abertura ocupa uma sequência vertical longa com palco fixo. No desktop, o scroll controla o tempo do vídeo com interpolação suave e impulsos grandes de roda ou trackpad são amortecidos somente enquanto a cena está ativa. Em telas móveis, o vídeo toca continuamente após o primeiro gesto enquanto o scroll controla o avanço de câmera, o apagão, as estrelas e a revelação, evitando buscas de quadro que travam o Safari. Texto e ação só se tornam interativos depois da revelação; em movimento reduzido, a experiência abre diretamente no quadro final.
 
 ### Album Sleeve
 

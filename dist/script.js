@@ -140,11 +140,17 @@ function positionBus(value) {
   routeOutput.value = `${Math.round(progress * 100)}%`;
 }
 
-introVideo.addEventListener('loadedmetadata', () => {
+function initializeIntroVideo() {
   videoDuration = Number.isFinite(introVideo.duration) ? introVideo.duration : 0;
   introVideo.pause();
   updateMotion();
-});
+}
+
+if (introVideo.readyState >= 1) {
+  initializeIntroVideo();
+} else {
+  introVideo.addEventListener('loadedmetadata', initializeIntroVideo, { once: true });
+}
 
 function updateMotion() {
   if (reduceMotion.matches) return;

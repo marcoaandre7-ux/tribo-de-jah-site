@@ -14,8 +14,8 @@ Abertura no show; encontro atual; memoria; estrada; discos; redes; contato; assi
 
 ## FIRST VIEWPORT
 
-A primeira tela e escura, com marca minima, chamada curta e texto de escala de cartaz. Um botao inicia a sequencia automatica: video do palco com enquadramento completo no notebook, tela preta, estrelas em perspectiva e fotografia do proximo show com o rosto visivel. O visitante pode pular a abertura; depois de concluida, so o botao de rever a reinicia.
+A primeira tela mostra o video do show em loop ao fundo, com marca minima, chamada de escala de cartaz e proximo evento provisório sobrepostos. O palco permanece inteiro no enquadramento do notebook, e um degradê mantém o texto legivel no celular. A rolagem é livre; o visitante pode pausar ou reproduzir o video.
 
 ## FORM
 
-Code-led. Seed key `1242b1e3`, assigned grounded direction 3: roteiro de luz e marcacoes de palco aplicado a uma narrativa de estrada. O movimento principal comeca por acao explicita, atravessa video, preto e estrelas e traz a fotografia do show dentro da mesma cena; o mapa do Brasil ocupa um viewport inteiro e o onibus demonstra automaticamente uma viagem de sessenta segundos com progresso e contagem regressiva; os discos saem das capas e giram em sessoes exclusivas de quinze segundos.
+Code-led. Seed key `1242b1e3`, assigned grounded direction 3: roteiro de luz e marcacoes de palco aplicado a uma narrativa de estrada. O video ao fundo da abertura corre sozinho e as informacoes ficam sobrepostas, sem sequencia de transicao nem bloqueio da rolagem; o mapa do Brasil ocupa um viewport inteiro e o onibus demonstra automaticamente uma viagem de sessenta segundos com progresso e contagem regressiva; os discos saem das capas e giram em sessoes exclusivas de quinze segundos.

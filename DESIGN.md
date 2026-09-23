@@ -109,7 +109,7 @@ A paleta combina noite de palco, papel de arquivo e luz âmbar; as cores rastaf�
 
 O conteúdo usa margens fluidas entre 1.25rem e 6rem e seções altas com bastante intervalo vertical. Desktop alterna composições de duas colunas; abaixo de 700px elas se tornam lineares, enquanto galerias e discos passam a trilhos horizontais com encaixe por gesto.
 
-O primeiro viewport é sempre ocupado pela imagem de palco. As seções seguintes variam densidade para criar respiração: fotografia total, página clara, rota escura, prateleira musical e grande campo âmbar.
+O primeiro viewport é ocupado pelo vídeo do palco em loop, com texto e informações sobrepostos em um campo de contraste escuro. As seções seguintes variam densidade para criar respiração: página clara, rota escura, prateleira musical e grande campo âmbar.
 
 ## Elevation & Depth
 
@@ -140,9 +140,9 @@ Grandes regiões e capas são retangulares e sem arredondamento. Círculos perte
 
 O cabeçalho fica sobre a imagem, reduzido à marca e a um botão circular. O menu abre como um único campo âmbar e usa links condensados em escala de cartaz; fecha por botão, Escape ou seleção de destino.
 
-### Scrollytelling Intro
+### Video de abertura
 
-A abertura ocupa uma tela escura, sem foto parada, e começa somente pelo botão “Assistir à abertura”. O vídeo toca naturalmente e uma linha de tempo leva a câmera ao apagão, às estrelas e à foto do próximo show. Em notebooks largos, o vídeo vertical preserva o palco inteiro em uma área própria; a foto final mantém o rosto à vista e deixa o texto em um campo separado. “Pular animação” revela a foto imediatamente; ao terminar, a rolagem fica livre e a foto permanece até o visitante clicar em “Rever abertura”. Em movimento reduzido, a experiência abre diretamente no quadro final.
+A abertura mostra o vídeo de teste em loop, sem som, com chamada da banda, próximo show provisório e acesso à agenda sobrepostos. A rolagem fica sempre livre. Em notebooks largos, o vídeo vertical preserva o palco inteiro na área direita; no celular, ocupa o fundo atrás de um gradiente escuro que garante a leitura. Um controle permite pausar e reproduzir; o vídeo pausa quando sai da tela ou quando a aba fica oculta. Com movimento reduzido, começa pausado e pode ser reproduzido por escolha explícita.
 
 ### Album Sleeve
 

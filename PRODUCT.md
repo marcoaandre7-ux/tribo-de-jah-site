@@ -28,8 +28,8 @@ O site sera visitado antes e depois de shows, por links de redes sociais e por b
 
 ## Capabilities and Constraints
 
-- Pagina unica na ordem: abertura cinematografica, destaque atual, navegacao, historia, turne, discografia, redes, contato e encerramento.
-- Usar o video de teste fornecido na abertura e a foto de teste fornecida no destaque seguinte.
+- Pagina unica na ordem: abertura com video e destaque atual, historia, turne, discografia, redes, contato e encerramento.
+- Usar o video de teste fornecido como fundo em loop na abertura, com informacoes provisorias do proximo show sobrepostas.
 - Historia e turne permanecem com conteudo estrutural e campos genericos neste prototipo.
 - A turne inclui um onibus animado e o texto generico de proximo show.
 - A discografia ja deve demonstrar discos que saem das capas, giram, tocam/pausam, param em quinze segundos e interrompem o anterior quando outro e selecionado. Como nao ha audios oficiais, a interface deve explicar honestamente que os trechos entram apos aprovacao.
@@ -45,7 +45,7 @@ Nome Tribo de Jah. O prototipo parte da identidade percebida nos materiais forne
 ## Evidence on Hand
 
 - Video de abertura de teste em `C:/Users/Adriano2/Downloads/gemini_generated_video_7daea4db.mp4`.
-- Fotografia de destaque de teste em `C:/Users/Adriano2/AppData/Local/Temp/codex-clipboard-d7404265-1d07-480d-abaa-1c10d3a0f463.jpg`.
+- Fotografia de teste fornecida anteriormente, preservada entre os ativos do prototipo mas nao exibida na abertura atual.
 - Instagram oficial informado pelo usuario: `https://www.instagram.com/tribodejahoficial/`.
 - Nao ha ainda textos historicos, agenda oficial, capas, nomes de musicas, audios aprovados nem contatos definitivos.
 
